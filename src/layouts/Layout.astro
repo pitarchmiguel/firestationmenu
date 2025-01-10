@@ -19,7 +19,9 @@ import Header from '../components/Header.astro';
 		bg-slate-50 
 		md:rounded-3xl 
 		shadow-md
-		overflow-hidden">
+		overflow-hidden
+		overflow
+		">
 		
 			<slot />
 
@@ -36,12 +38,16 @@ import Header from '../components/Header.astro';
 		display: flex;
 		justify-content: center;
 		width: 100%;
-		height: 100%;
+		height: min-100%;
 	}
 		@media (width > 768px) {
 		body {
 			justify-content: center;
 			align-items: center;
 		}
+		}
+
+		.overflow {
+			overflow: auto;
 		}
 </style>
