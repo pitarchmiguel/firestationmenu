@@ -6,12 +6,12 @@ const categories = menuData.menu;
 ---
 
 <ul>
-  {categories.map(category => (
-    <li key={category.id} class="font-semibold w-4/5">
-       {category.category}
-    </li>
-  ))}
-</ul>
+    {categories.map(category => (
+      <li>
+        <a href={`/categoria/${category.id}`}>{category.category}</a>
+      </li>
+    ))}
+  </ul>
   
 <style>
     ul {
@@ -24,7 +24,7 @@ const categories = menuData.menu;
     }
 
     li {
-        padding: 0.5rem;
+        padding: .9rem;
         font-size: 1rem;
         border: 1px solid #dadada;
         border-radius: 0.8rem;

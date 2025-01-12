@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import About from '../../components/About.astro';
+import Primary from '../../components/Primary.astro';
+import menuData from '../../components/menu.json'; // Ajusta la ruta si es necesario
+
+
+// Generar rutas estáticas para cada categoría
+export async function getStaticPaths() {
+  return menuData.menu.map(category => ({
+    params: { id: category.id.toString() }, // Asegúrate de que `id` sea una string
+  }));
+}
+
+// Obtener el ID de la categoría desde la URL
+const { id } = Astro.params;
+
+// Buscar la categoría correspondiente
+const category = menuData.menu.find(cat => cat.id === parseInt(id));
+
+if (!category) {
+  throw new Error(`Categoría con ID ${id} no encontrada`);
+}
+---
+
+<Layout>
+    
+  <ul>
+    {category.items.map(item => (
+      <div class="product-card">
+        <div class="product-info">
+            <h3 class="product-title">{item.name}</h3>
+            <p class="product-description">{item.ingredients}</p>
+            <p class="product-price">{item.price.toFixed(2)} €</p>
+        </div>
+        {/* <div class="product-image">
+                  <img src={item.imagen} alt={item.name} />
+                </div> */}
+      </div>
+    ))}
+  </ul>
+<a href="/">Volver a Categorías</a>
+</Layout>
+
+<style>
+  .product-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 16px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.product-info {
+  flex: 1;
+  margin-right: 16px;
+}
+
+.product-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0 0 8px;
+  
+}
+
+.product-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 12px;
+}
+
+.product-price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #222;
+  margin: 0;
+}
+
+.product-image img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+</style>

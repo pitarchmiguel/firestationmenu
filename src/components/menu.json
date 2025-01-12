@@ -2,38 +2,24 @@
     "menu": [
       {
         "id": 1,
-        "category": "Cafés e Infusiones",
+        "category": "Bocadillos",
         "items": [
-          {"name": "Café con leche", "price": 1.80, "ifStock": true, "image": ""},
-          {"name": "Café con leche XL", "price": 2.30, "ifStock": true, "image": ""},
-          {"name": "Cortado", "price": 1.40, "ifStock": true, "image": ""},
-          {"name": "Café solo", "price": 1.20, "ifStock": true, "image": ""},
-          {"name": "Bombón", "price": 1.50, "ifStock": true, "image": ""},
-          {"name": "Infusiones", "price": 1.30, "ifStock": true, "image": ""},
-          {"name": "Cola-Cao", "price": 1.80, "ifStock": true, "image": ""},
-          {"name": "Extras (hielo, para llevar, leches vegetales)", "price": 0.20, "ifStock": true, "image": ""}
-        ]
+        {"name": "B.Press", "ingredients": "Jamón serrano con tomate", "price": 5.00, "ifStock": true, "image": ""},
+        {"name": "Burpee", "ingredients": "Atún con tomate", "price": 5.00, "ifStock": true, "image": ""},
+        {"name": "Ring Row", "ingredients": "Pechuga de pavo con tomate", "price": 5.00, "ifStock": true, "image": ""},
+        {"name": "DL", "ingredients": "Tortilla francesa con queso y tomate", "price": 5.50, "ifStock": true, "image": ""},
+        {"name": "BMU", "ingredients": "Lomo, queso, tomate y AOVE", "price": 5.50, "ifStock": true, "image": ""},
+        {"name": "T2B", "ingredients": "Bacon, queso y tomate", "price": 5.50, "ifStock": true, "image": ""},
+        {"name": "BJO", "ingredients": "Atún, lechuga, tomate, huevo duro, cebolla y AOVE", "price": 6.50, "ifStock": true, "image": ""},
+        {"name": "PC", "ingredients": "Jamón serrano ibérico, tomate y AOVE", "price": 6.50, "ifStock": true, "image": ""},
+        {"name": "SNACK", "ingredients": "Pollo a la plancha, tomate seco, lechuga, cheddar, salsa pesto y mayonesa", "price": 7.00, "ifStock": true, "image": ""},
+        {"name": "Murph", "ingredients": "Lomo, panceta, huevo, queso, cebolla caramelizada y tomate", "price": 7.50, "ifStock": true, "image": ""},
+        {"name": "343", "ingredients": "Sobrasada, panceta, queso y huevo", "price": 7.50, "ifStock": true, "image": ""},
+        {"name": "The Don", "ingredients": "Ternera, roquefort y cebolla caramelizada", "price": 7.50, "ifStock": true, "image": ""}
+      ]
       },
       {
         "id": 2,
-        "category": "Chapatas/Bocadillos",
-        "items": [
-          {"name": "B.Press (Jamón serrano con tomate)", "price": 5.00, "ifStock": true, "image": ""},
-          {"name": "Burpee (Atún con tomate)", "price": 5.00, "ifStock": true, "image": ""},
-          {"name": "Ring Row (Pechuga de pavo con tomate)", "price": 5.00, "ifStock": true, "image": ""},
-          {"name": "DL (Tortilla francesa con queso y tomate)", "price": 5.50, "ifStock": true, "image": ""},
-          {"name": "BMU (Lomo, queso, tomate y AOVE)", "price": 5.50, "ifStock": true, "image": ""},
-          {"name": "T2B (Bacon, queso y tomate)", "price": 5.50, "ifStock": true, "image": ""},
-          {"name": "BJO (Atún, lechuga, tomate, huevo duro, cebolla y AOVE)", "price": 6.50, "ifStock": true, "image": ""},
-          {"name": "PC (Jamón serrano ibérico, tomate y AOVE)", "price": 6.50, "ifStock": true, "image": ""},
-          {"name": "SNACK (Pollo a la plancha, tomate seco, lechuga, cheddar, salsa pesto y mayonesa)", "price": 7.00, "ifStock": true, "image": ""},
-          {"name": "Murph (Lomo, panceta, huevo, queso, cebolla caramelizada y tomate)", "price": 7.50, "ifStock": true, "image": ""},
-          {"name": "343 (Sobrasada, panceta, queso y huevo)", "price": 7.50, "ifStock": true, "image": ""},
-          {"name": "The Don (Ternera, roquefort y cebolla caramelizada)", "price": 7.50, "ifStock": true, "image": ""}
-        ]
-      },
-      {
-        "id": 3,
         "category": "Tostas",
         "items": [
           {"name": "Aceite y sal", "price": 2.00, "ifStock": true, "image": ""},
@@ -55,7 +41,7 @@
         ]
       },
       {
-        "id": 4,
+        "id": 3,
         "category": "Cervezas",
         "items": [
           {"name": "Free Damm", "price": 2.00, "ifStock": true, "image": ""},
@@ -68,7 +54,7 @@
         ]
       },
       {
-        "id": 5,
+        "id": 4,
         "category": "Batidos",
         "items": [
           {"name": "Proteína vegetal o animal + agua", "price": 2.50, "ifStock": true, "image": ""},
@@ -77,8 +63,8 @@
         ]
       },
       {
-        "id": 6,
-        "category": "Zumos/Licuados",
+        "id": 5,
+        "category": "Zumoos/Licuados",
         "items": [
           {"name": "Zumo de piña", "price": 1.70, "ifStock": true, "image": ""},
           {"name": "Zumo de melocotón", "price": 1.70, "ifStock": true, "image": ""},
@@ -90,7 +76,7 @@
         ]
       },
       {
-        "id": 7,
+        "id": 6,
         "category": "Bowls",
         "items": [
           {"name": "Boxfire (Copos de avena, leche vegetal o de vaca, proteína en polvo, crema de cacahuete, plátano, chocolate, semillas y nueces)", "price": 7.00, "ifStock": true, "image": ""},
@@ -103,19 +89,7 @@
         ]
       },
       {
-        "id": 8,
-        "category": "Pancakes de Avena",
-        "items": [
-          {"name": "Pancake de crema de avellana y plátano", "price": 6.00, "ifStock": true, "image": ""},
-          {"name": "Pancake de crema de cacahuete y plátano", "price": 6.50, "ifStock": true, "image": ""},
-          {"name": "Pancake de mermelada, miel o sirope de agave", "price": 5.00, "ifStock": true, "image": ""},
-          {"name": "Pancake de jamón york y queso", "price": 6.00, "ifStock": true, "image": ""},
-          {"name": "Pancake de bacón y queso", "price": 7.00, "ifStock": true, "image": ""},
-          {"name": "Extra huevo", "price": 1.00, "ifStock": true, "image": ""}
-        ]
-      },
-      {
-        "id": 9,
+        "id": 7,
         "category": "Tartas Saludables",
         "items": [
           {"name": "Carrot cake / Carrot plum cake", "price": 3.00, "ifStock": true, "image": ""},
@@ -127,7 +101,7 @@
         ]
       },
       {
-        "id": 10,
+        "id": 8,
         "category": "Tartas por Encargo",
         "items": [
           {"name": "Tres chocolates", "price": null, "ifStock": true, "image": ""},
@@ -141,13 +115,27 @@
         ]
       },
       {
-        "id": 11,
+        "id": 9,
         "category": "Menú",
         "items": [
           {"name": "Plato del día + agua + postre a elegir + café o infusión", "price": 12.00, "ifStock": true, "image": ""},
           {"name": "Plato del día", "price": 8.50, "ifStock": true, "image": ""},
           {"name": "Poke de salmón o atún", "price": 10.00, "ifStock": true, "image": ""}
         ]
+      },
+      {
+        "id": 10,
+        "category": "Cafés e Infusiones",
+        "items": [
+        {"name": "Café con leche", "ingredients": "", "price": 1.80, "ifStock": true, "image": ""},
+        {"name": "Café con leche XL", "ingredients": "", "price": 2.30, "ifStock": true, "image": ""},
+        {"name": "Cortado", "ingredients": "", "price": 1.40, "ifStock": true, "image": ""},
+        {"name": "Café solo", "ingredients": "", "price": 1.20, "ifStock": true, "image": ""},
+        {"name": "Bombón", "ingredients": "", "price": 1.50, "ifStock": true, "image": ""},
+        {"name": "Infusiones", "ingredients": "", "price": 1.30, "ifStock": true, "image": ""},
+        {"name": "Cola-Cao", "ingredients": "", "price": 1.80, "ifStock": true, "image": ""},
+        {"name": "Extras", "ingredients": "hielo, para llevar, leches vegetales", "price": 0.20, "ifStock": true, "image": ""}
+      ]
       }
     ]
   }
