@@ -29,8 +29,7 @@ if (!category) {
       <img class="logo" src="/images/logo_firestation.png" alt="logo" class="logo">
       
       </div>
-        <div class="grupo">
-          <div class="grupo-content">
+        <div>
             {category.items.map(item => (
               <div class="product-card">
                 <div class="product-info">
@@ -43,7 +42,6 @@ if (!category) {
                 </div> */}
               </div>
             ))}
-          </div>
         </div>
     </div>
 </div>
@@ -60,7 +58,7 @@ if (!category) {
     object-fit: cover;
   }
   .contenedor {
-      height: 100%;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -82,7 +80,7 @@ if (!category) {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  top: 0;
+  top: 0px;
   width: 100%; /* Se ajusta al ancho del contenedor padre */
   background-color: rgb(255, 255, 255); /* Fondo semitransparente (tomato con opacidad) *//* Asegura que esté sobre otros elementos */
   padding: 10px; /* Espaciado interno */
@@ -99,7 +97,6 @@ if (!category) {
   background-color: #fff;
   border-bottom: 1px solid #ddd;
   padding: 16px;
-  max-width: 600px;
   margin: auto;
 }
 
