@@ -19,6 +19,7 @@ const category = menuData.menu.find(cat => cat.id === parseInt(id));
 if (!category) {
   throw new Error(`Categoría con ID ${id} no encontrada`);
 }
+// if (category.iNStock === false) {}
 ---
 
 <Layout>
@@ -38,9 +39,9 @@ if (!category) {
                   <p class="product-description">{item.ingredients}</p>
                   <p class="product-price">{item.price} €</p>
                 </div>
-                <div class="product-image">
+                {/* <div class="product-image">
                   <img src={item.image} alt={item.name} />
-                </div> 
+                </div> */} 
               </div>
             ))}
         </div>
