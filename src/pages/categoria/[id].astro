@@ -20,11 +20,12 @@ if (!category) {
   throw new Error(`Categoría con ID ${id} no encontrada`);
 }
 // if (category.iNStock === false) {}
+
 ---
 
 <Layout>
   <div class="contenedor">
-    <div class="carta">
+    <div class="carta" id="carta">
       <div class="atras">
         <a href="/"><svg  xmlns="http://www.w3.org/2000/svg"  width="36"  height="36"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left-dashed"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12h6m3 0h1.5m3 0h.5" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg></a>
       
@@ -33,22 +34,26 @@ if (!category) {
       </div>
         <div>
             {category.items.map(item => (
+              item.inStock === false ? null : (
               <div class="product-card">
                 <div class="product-info">
                   <h3 class="product-title">{item.name}</h3>
                   <p class="product-description">{item.ingredients}</p>
                   <p class="product-price">{item.price} €</p>
                 </div>
-                {/* <div class="product-image">
+                {item.image && (
+                  <div class="product-image">
                   <img src={item.image} alt={item.name} />
-                </div> */} 
+                </div>
+                )}
               </div>
+            )
             ))}
         </div>
     </div>
 </div>
-</Layout>
 
+</Layout>
 <style>
   .logo {
     width: 60px;
@@ -78,7 +83,7 @@ if (!category) {
 
 
 .atras {
-  position: sticky;
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
