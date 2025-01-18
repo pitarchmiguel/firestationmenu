@@ -39,7 +39,7 @@ if (!category) {
                 <div class="product-info">
                   <h3 class="product-title">{item.name}</h3>
                   <p class="product-description">{item.ingredients}</p>
-                  <p class="product-price">{item.price} €</p>
+                  <p class="product-price">{item.price.toFixed(2)} €</p>
                 </div>
                 {item.image && (
                   <div class="product-image">
