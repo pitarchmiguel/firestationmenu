@@ -5,15 +5,20 @@ import menuData from './menu.json'; // Ruta correcta del archivo JSON
 const categories = menuData.menu;
 ---
 
-<ul>
-    {categories.map(category => (
-      <button>
-        <li>
-        <a href={`/categoria/${category.id}`}>{category.category}</a>
-      </li>
-      </button>
-    ))}
+<div>
+  <ul>
+    {categories
+      .sort((a, b) => a.id - b.id) // Ordena las categorías por el número de id
+      .map(category => (
+        <button key={category.id}>
+          <li>
+            <a href={`/categoria/${category.id}`}>{category.category}</a>
+          </li>
+        </button>
+      ))}
   </ul>
+  
+</div>
   
 <style>
     ul {
