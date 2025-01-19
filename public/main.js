@@ -1,13 +1,18 @@
-let openInfo = document.querySelector('#open-info');
-let closeInfo = document.querySelector('#close_info');
-
-openInfo.addEventListener('click', () => {
-    console.log('click');
-    let openedInfo = document.querySelector('.opened_info');
-    openedInfo.style.bottom = '0';
-})
-
-closeInfo.addEventListener('click', () => {
-    let openedInfo = document.querySelector('.opened_info');
-    openedInfo.style.bottom = '-100vh';
-})
+document.addEventListener("DOMContentLoaded", () => {
+    const carta = document.getElementById("carta");
+    let lastScrollY = window.scrollY;
+  
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > lastScrollY) {
+        // Scroll hacia abajo: Mostrar la carta
+        carta.classList.add("visible");
+        carta.classList.remove("hidden");
+      } else {
+        // Scroll hacia arriba: Ocultar la carta
+        carta.classList.remove("visible");
+        carta.classList.add("hidden");
+      }
+      lastScrollY = window.scrollY; // Actualiza la posición del scroll
+    });
+  });
+  
