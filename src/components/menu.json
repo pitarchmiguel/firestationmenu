@@ -9,7 +9,7 @@
                 {"name": "DL", "price": 6.00, "ingredients": "Tortilla francesa con queso, tomate y AOVE", "inStock": true, "image": ""},
                 {"name": "BMU", "price": 6.00, "ingredients": "Lomo, queso, tomate y AOVE", "inStock": true, "image": ""},
                 {"name": "T2B", "price": 6.00, "ingredients": "Bacon, queso, tomate y AOVE", "inStock": true, "image": ""},
-                {"name": "BJO", "price": 7.00, "ingredients": "Atún, lechuga, tomate, huevo duro, cebolla y AOVE", "inStock": true, "image": "../public/images/bocadillo_atun.jpeg"},
+                {"name": "BJO", "price": 7.00, "ingredients": "Atún, lechuga, tomate, huevo duro, cebolla y AOVE", "inStock": true, "image": "/public/images/bocadillo_atun.jpeg"},
                 {"name": "SNATCH", "price": 7.50, "ingredients": "Pollo a la plancha, tomate seco, lechuga, cheddar, salsa pesto y mayonesa", "inStock": true, "image": ""}
             ]
         },
