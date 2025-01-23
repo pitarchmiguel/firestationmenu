@@ -1,11 +1,11 @@
 ---
 import menuData from './menu.json'; // Ruta correcta del archivo JSON
-
+import X from '../assets/x.svg';
 // Acceder a las categorías
 const categories = menuData.menu;
 ---
 
-<div>
+<div class="">
   <ul>
     {categories
       .sort((a, b) => a.id - b.id) // Ordena las categorías por el número de id
@@ -17,7 +17,16 @@ const categories = menuData.menu;
         </button>
       ))}
   </ul>
-  
+  <div id="information">
+    <button id="close-popup"><X size={32}/></button>
+    <img src="../images/mapa.png" alt="Mapa de FireStation">
+    <section class="info-popup">
+      <h1>firestation</h1>
+      <p class="direccion">C/ Amelia Ferrer Armengot</p>
+      <p>12004 - Castelló de la Plana</p>
+      <p>964 24 24 24</p>
+    </section>
+  </div>
 </div>
   
 <style>
@@ -35,9 +44,6 @@ const categories = menuData.menu;
       display:block;
     }
 
-   
-
-
     button {
         padding: .9rem;
         font-size: 1rem;
@@ -45,5 +51,39 @@ const categories = menuData.menu;
         border-radius: 0.8rem;
         width: 90%;
         text-align: center;
+    }
+
+    #information {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 75%;
+        background-color: rgb(250, 250, 250);
+        color: rgb(62, 62, 62);
+        padding: 0;
+        z-index: -1;
+        border-radius: 1.3rem 1.3rem 0 0;
+        overflow: hidden;
+
+        transition: ease-in-out 0.5s;
+    }
+
+    .info-popup h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      font-weight: bolder;
+
+    }
+    .info-popup {
+      padding: 1rem;
+    }
+
+    #close-popup {
+      width: 100%;
+      position: absolute;
+      right: 0;
+      border: none;
+      cursor: pointer;
     }
 </style>
