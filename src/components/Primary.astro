@@ -18,7 +18,7 @@ const categories = menuData.menu;
       ))}
   </ul>
   <div id="information">
-    <button id="close-popup"><X size={32}/></button>
+    <div id="close-popup"><X size={32}/></div>
     <img src="../images/mapa.png" alt="Mapa de FireStation">
     <section class="info-popup">
       <h1>firestation</h1>
@@ -80,10 +80,12 @@ const categories = menuData.menu;
     }
 
     #close-popup {
-      width: 100%;
       position: absolute;
+      display: block;
       right: 0;
+      top: 0;
       border: none;
       cursor: pointer;
+      padding: 1.5rem;
     }
 </style>
