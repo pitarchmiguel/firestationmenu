@@ -6,18 +6,18 @@ import menuData from '../../components/menu.json'; // Ajusta la ruta si es neces
 // Generar rutas estáticas para cada categoría
 export async function getStaticPaths() {
   return menuData.menu.map(category => ({
-    params: { id: category.id.toString() }, // Asegúrate de que `id` sea una string
+    params: { category: category.category.toLowerCase() }, // Asegúrate de que `id` sea una string
   }));
 }
 
 // Obtener el ID de la categoría desde la URL
-const { id } = Astro.params;
+const { category } = Astro.params;
 
 // Buscar la categoría correspondiente
-const category = menuData.menu.find(cat => cat.id === parseInt(id));
+const categoryData = menuData.menu.find((item) => item.category.toLowerCase() === category);
 
 if (!category) {
-  throw new Error(`Categoría con ID ${id} no encontrada`);
+  throw new Error(`Categoría con ID ${category} no encontrada`);
 }
 
 ---
@@ -32,7 +32,7 @@ if (!category) {
       
       </div>
         <div>
-            {category.items.map(item => (
+            {categoryData && categoryData.items.map(item => (
               item.inStock === false ? null : (
               <div class="product-card">
                 <div class="product-info">
