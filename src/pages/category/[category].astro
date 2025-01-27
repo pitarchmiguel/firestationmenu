@@ -1,136 +1,66 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import menuData from '../../components/menu.json'; // Ajusta la ruta si es necesario
-
+import menuData from '../../components/menu.json';
 
 // Generar rutas estáticas para cada categoría
 export async function getStaticPaths() {
   return menuData.menu.map(category => ({
-    params: { category: category.category.toLowerCase() }, // Asegúrate de que `id` sea una string
+    params: { category: category.category.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') }
   }));
 }
 
-// Obtener el ID de la categoría desde la URL
+// Obtener la categoría desde la URL
 const { category } = Astro.params;
 
 // Buscar la categoría correspondiente
-const categoryData = menuData.menu.find((item) => item.category.toLowerCase() === category);
+const categoryData = menuData.menu.find(
+  (item) => item.category.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') === category
+);
 
-if (!category) {
-  throw new Error(`Categoría con ID ${category} no encontrada`);
+if (!categoryData) {
+  return (
+    <Layout>
+      <div class="contenedor">
+        <h1>Categoría no encontrada</h1>
+        <a href="/">Volver al inicio</a>
+      </div>
+    </Layout>
+  );
 }
-
 ---
 
 <Layout>
-<div class="contenedor">
+  <div class="contenedor">
     <div class="carta" id="carta">
       <div class="atras">
-        <a href="/"><svg  xmlns="http://www.w3.org/2000/svg"  width="36"  height="36"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left-dashed"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12h6m3 0h1.5m3 0h.5" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg></a>
-      
-      <img class="logo" src="/images/logo_firestation.png" alt="logo" class="logo">
-      
+        <a href="/">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left-dashed">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 12h6m3 0h1.5m3 0h.5" />
+            <path d="M5 12l6 6" />
+            <path d="M5 12l6 -6" />
+          </svg>
+        </a>
+        <img class="logo" src="/images/logo_firestation.png" alt="logo" class="logo" />
       </div>
-        <div>
-            {categoryData && categoryData.items.map(item => (
-              item.inStock === false ? null : (
-              <div class="product-card">
-                <div class="product-info">
-                  <h3 class="product-title">{item.name}</h3>
-                  <p class="product-description">{item.ingredients}</p>
-                  <p class="product-price">{item.price.toFixed(2)} €</p>
-                </div>
-                {item.image && (
-                  <div class="product-image">
+      <div>
+        {categoryData.items.map(item => (
+          item.inStock === false ? null : (
+            <div class="product-card">
+              <div class="product-info">
+                <h3 class="product-title">{item.name}</h3>
+                <p class="product-description">{item.ingredients}</p>
+                <p class="product-price">{item.price.toFixed(2)} €</p>
+              </div>
+              {item.image && (
+                <div class="product-image">
                   <img src={item.image} alt={item.name} />
                 </div>
-                )}
-              </div>
-            )
-            ))}
-        </div>
+              )}
+            </div>
+          )
+        ))}
+      </div>
     </div>
-</div>
-
+  </div>
 </Layout>
-<style>
-  .logo {
-    width: 60px;
-    height: 60px;
-    padding: 10px;
-  }
-  
-  .logo img {
-    object-fit: cover;
-  }
-  .contenedor {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-  }
-  
-  .carta {
-    width: 100%;
-    background-color: var(--gray_050);
-    box-shadow: var(--gray_400);
-
-    overflow: auto;
-}
-.atras {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  top: 0px;
-  width: 100%; /* Se ajusta al ancho del contenedor padre */
-  background-color: rgb(255, 255, 255); /* Fondo semitransparente (tomato con opacidad) *//* Asegura que esté sobre otros elementos */
-  padding: 10px; /* Espaciado interno */
-}
-
-.atras a {
-  display: block;
-  color: #333;
-  padding: 10px;
-}
-  .product-card {
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-  padding: 16px;
-  margin: auto;
-}
-
-.product-info {
-  flex: 1;
-  margin-right: 16px;
-}
-
-.product-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #4d4d4d;
-  
-}
-
-.product-description {
-  font-size: 0.9rem;
-  color: #757575;
-  margin: 0 0 12px;
-}
-
-.product-price {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #373737;
-  margin: 0;
-}
-
-.product-image img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-}
-</style>
