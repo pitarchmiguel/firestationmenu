@@ -3,13 +3,13 @@ const popupInfo = document.querySelector('#information');
 const closeInfo = document.querySelector('#close-popup');
 
 openInfo.addEventListener('click', () => {
-    popupInfo.style.zIndex = "1";
+    popupInfo.style.visibility = "visible";
 
     console.log('abrir')
 });
 
 closeInfo.addEventListener('click', () => {
-    popupInfo.style.zIndex = "-1";
+    popupInfo.style.visibility = "hidden";
 
     console.log('cerrar')
 });

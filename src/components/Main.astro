@@ -5,16 +5,15 @@ import X from '../assets/x.svg';
 const categories = menuData.menu;
 ---
 
-<div class="">
+<div>
   <ul>
     {categories
-      .sort((a, b) => a.id - b.id) // Ordena las categorías por el número de id
       .map(category => (
-        <button key={category.id}>
-          <li>
-            <a href={`/categoria/${category.id}`}>{category.category}</a>
-          </li>
-        </button>
+          <button>
+            <li>
+              <a href={`/categoria/${category.id}`}>{category.category}</a>
+            </li>
+          </button>
       ))}
   </ul>
   <div id="information">
@@ -55,13 +54,13 @@ const categories = menuData.menu;
 
     #information {
         position: absolute;
-        bottom: 0;
+        bottom: -150vh;
         width: 100%;
         height: 75%;
         background-color: rgb(250, 250, 250);
         color: rgb(62, 62, 62);
         padding: 0;
-        z-index: -1;
+        /*visibility: hidden;*/
         border-radius: 1.3rem 1.3rem 0 0;
         overflow: hidden;
 
