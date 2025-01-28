@@ -42,7 +42,10 @@ if (!categoryData) {
                 <div class="product-info">
                   <h3 class="product-title">{item.name}</h3>
                   <p class="product-description">{item.ingredients}</p>
-                  <p class="product-price">{item.price.toFixed(2)} €</p>
+                  <p class="product-price">
+                    {item.price === 0 
+                    ? 'Consultar el precio' 
+                    : `${item.price.toFixed(2)} €`}</p>
                 </div>
                 {item.image && (
                   <div class="product-image">
@@ -111,14 +114,14 @@ if (!categoryData) {
 }
 
 .product-title {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #4d4d4d;
   
 }
 
 .product-description {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #757575;
   margin: 0 0 12px;
 }
