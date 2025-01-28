@@ -104,7 +104,7 @@
         },
         {
             "id": 9,
-            "category": "Cafés e Infusiones",
+            "category": "Cafes e Infusiones",
             "items": [
                 {"name": "Café con leche", "price": 2.00, "inStock": true, "image": ""},
                 {"name": "Café con leche XL", "price": 3.50, "inStock": true, "image": ""},

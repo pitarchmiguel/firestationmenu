@@ -6,7 +6,12 @@ import menuData from '../../components/menu.json'; // Ajusta la ruta si es neces
 // Generar rutas estáticas para cada categoría
 export async function getStaticPaths() {
   return menuData.menu.map(category => ({
-    params: { category: category.category.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') }
+    params: { 
+      category: category.category
+        .toLowerCase()               // Convierte la categoría a minúsculas.
+        .replace(/\s+/g, '-')        // Reemplaza uno o más espacios por un guion ('-').
+        .replace(/[^a-z0-9-]/g, '')  // Elimina caracteres que no sean letras, números o guiones.
+    }
   }));
 }
 
