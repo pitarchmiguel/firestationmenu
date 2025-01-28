@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 const { id } = Astro.params;
 
 // Buscar la categoría correspondiente
-const categoryData = menuData.menu.find((item) => item.id === parseInt(id));
+const categoryData = menuData.menu.find((item) => item.id === Number(id));
 
 
 if (!categoryData) {

@@ -11,7 +11,7 @@ const categories = menuData.menu;
       .map(category => (
           <button class="p-3 text-md border rounded-xl border-slate-300 w-[90%] text-slate-700">
             <li>
-              <a href={`/category/${category.id}`}>{category.category}</a>
+              <a class="block" href={`/category/${category.id}`}>{category.category}</a>
             </li>
           </button>
       ))}
