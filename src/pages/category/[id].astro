@@ -7,24 +7,21 @@ import menuData from '../../components/menu.json'; // Ajusta la ruta si es neces
 export async function getStaticPaths() {
   return menuData.menu.map(category => ({
     params: { 
-      category: category.category
-        .toLowerCase()               // Convierte la categoría a minúsculas.
-        .replace(/\s+/g, '-')        // Reemplaza uno o más espacios por un guion ('-').
-        .replace(/[^a-z0-9-]/g, '')  // Elimina caracteres que no sean letras, números o guiones.
+      id: category.id
     }
   }));
 }
 
 
 // Obtener el ID de la categoría desde la URL
-const { category } = Astro.params;
+const { id } = Astro.params;
 
 // Buscar la categoría correspondiente
-const categoryData = menuData.menu.find((item) => item.category.toLowerCase() === category);
+const categoryData = menuData.menu.find((item) => item.id === parseInt(id));
 
 
 if (!categoryData) {
-  throw new Error(`La categoría ${category} no se ha encontrado`);
+  throw new Error(`La categoría ${id} no se ha encontrado`);
 }
 
 ---
