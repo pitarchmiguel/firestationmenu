@@ -50,7 +50,7 @@
         },
         {
             "id": 4,
-            "category": "Menú",
+            "category": "Menu",
             "items": [
                 {"name": "Plato del día + agua + postre a elegir + café o infusión", "price": 12.50, "inStock": true, "image": ""},
                 {"name": "Plato del día", "price": 8.50, "inStock": true, "image": ""},
