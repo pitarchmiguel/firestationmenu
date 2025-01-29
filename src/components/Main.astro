@@ -1,13 +1,34 @@
 ---
 import menuData from './menu.json'; // Ruta correcta del archivo JSON
-import X from '../assets/x.svg';
 // Acceder a las categorías
 const categories = menuData.menu;
 import Close from '../assets/close.svg';
 import Phone from '../assets/phone.svg';
 import Map from '../assets/map.svg';
 import Schedule from '../assets/schedule.svg';
+import Info from '../assets/info-circle.svg';
+import MoreInfo from '../assets/more-info.svg';
 ---
+
+<div class="relative">
+  <img src="https://go.nordqr.com/89p92c/ff00b67072u.webp" class="w-screen h-[250px] object-fill" alt="Logo Firestation">
+</div>
+
+
+<div class="p-5 my-3">
+  <h1 class="text-3xl font-extrabold text-gray-800 uppercase tracking-tight pt-3 pb-3">Firestation</h1>
+  <aside class="flex justify-between mt-4 mb-4 items-center">
+      <div class="flex gap-3 items-center">
+          <Info />
+          <div>
+              <p class="font-semibold">Información</p>
+              <span class="text-sm text-gray-600">Dirección, Teléfono, Horarios</span>
+          </div>
+      </div>
+       <button id="open-info"><MoreInfo size={32}/></button>
+  </aside>
+</div>
+
 
 <div>
   <ul class="flex flex-col place-items-center gap-4 mb-4">
