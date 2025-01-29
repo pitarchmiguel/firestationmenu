@@ -3,6 +3,10 @@ import menuData from './menu.json'; // Ruta correcta del archivo JSON
 import X from '../assets/x.svg';
 // Acceder a las categorías
 const categories = menuData.menu;
+import Close from '../assets/close.svg';
+import Phone from '../assets/phone.svg';
+import Map from '../assets/map.svg';
+import Schedule from '../assets/schedule.svg';
 ---
 
 <div>
@@ -17,29 +21,34 @@ const categories = menuData.menu;
       ))}
   </ul>
 
-  <div id="information" class="absolute w-full h-[75%] bg-slate-50 p-0 rounded-t-2xl overflow-hidden bottom-0 hidden">
-    <div id="close-popup" class="absolute top-0 right-0 p-2 cursor-pointer"><X size={32}/></div>
-    <img src="../images/mapa.png" alt="Mapa de FireStation">
+  <div id="popup" class="h-[80%] w-full bg-slate-100 absolute rounded-3xl transition-all duration-400 ease-in-out overflow-hidden -left-full">
 
-      <address class="p-5 space-y-4 not-italic">
-          <h1 class="text-2xl font-extrabold uppercase">FireStation</h1>
-          <!-- Dirección -->
-            <div class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-              <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-              </svg>
-              <p>C/ Amelia Ferrer Armengot 12<br>12004 Castellón de la Plana, España</p>
-              
-            </div>
-        
-          
-          <!-- Teléfono -->
-            <div class="flex items-center space-x-2">
-              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-phone"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
-              <a href="tel:+000 000 000" class="hover:text-blue-500">964 000 000</a>
-            </div>
-        </address>
-  </div>
+    <button id="cerrar-popup" class="cursor-pointer absolute top-0 right-0 p-4">
+        <Close width={38} height={38} />
+    </button>
+
+    
+    <div>
+        <img src="https://firestation.netlify.app/images/mapa.png" alt="Mapa">
+        <div class="p-6">
+            <h1 class="uppercase text-3xl font-extrabold tracking-tighter">firestation</h1>
+            <address class="flex flex-col gap-3 mt-6 not-italic">
+                <div class="flex items-center gap-4">
+                    <Map /> <p>C/ Amelia Ferrer Armengot 12<br>12004 Castellón de la Plana</p>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <Phone /> <a href="tel:+34690040694">690 040 694</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <Schedule /> <p>Lu - Vi: 7:00 - 17:00<br>Sab: 8:00 - 13:00</p>
+                </div>
+                
+            </adress>
+        </div>
+    </div>
+    
+</div>
+</div>
 </div>

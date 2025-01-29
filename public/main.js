@@ -1,13 +1,15 @@
-const moreInfo = document.querySelector('#open-info');
-const OpenedInfo = document.querySelector('#information');
-const closeInfo = document.querySelector('#close-popup');
+const button = document.querySelector('#open-info');
+const closed = document.querySelector('#cerrar-popup');
 
-moreInfo.addEventListener('click', () => {
-    OpenedInfo.classList.toggle('hidden');
-    console.log('clicked');
+button.addEventListener('click', () => {
+    console.log('Button clicked');
+    const popup = document.querySelector('#popup');
+    popup.style.left = '0';
+    popup.style.bottom = '0';
 });
 
-closeInfo.addEventListener('click', () => {
-    OpenedInfo.classList.toggle('hidden');
-    console.log('closed');
+closed.addEventListener('click', () => {
+    console.log('Closed clicked');
+    const popup = document.querySelector('#popup');
+    popup.style.left = '-100%';
 });
