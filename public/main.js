@@ -13,3 +13,4 @@ closed.addEventListener('click', () => {
     const popup = document.querySelector('#popup');
     popup.style.left = '-100%';
 });
+

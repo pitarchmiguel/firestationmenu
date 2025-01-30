@@ -35,29 +35,64 @@ if (!categoryData) {
       <img class="logo" src="/images/logo_firestation.png" alt="logo" class="logo">
       
       </div>
-        <div>
-            {categoryData && categoryData.items.map(item => (
-              item.inStock === false ? null : (
-              <div class="product-card">
-                <div class="product-info">
-                  <h3 class="product-title">{item.name}</h3>
-                  <p class="product-description">{item.ingredients}</p>
-                  <p class="product-price">
-                    {item.price === 0 
-                    ? 'Consultar el precio' 
-                    : `${item.price.toFixed(2)} €`}</p>
-                </div>
-                {item.image && (
-                  <div class="product-image">
-                  <img src={item.image} alt={item.name} />
-                </div>
-                )}
+      <div>
+        {categoryData && categoryData.items.map(item => (
+          item.inStock === false ? null : (
+            <div class="product-card">
+              <div class="product-info">
+                <h3 class="product-title">{item.name}</h3>
+                <p class="product-description">{item.ingredients}</p>
+                <p class="product-price">
+                  {item.price === 0 
+                  ? 'Consultar el precio' 
+                  : `${item.price.toFixed(2)} €`}
+                </p>
               </div>
-            )
-            ))}
-        </div>
+              {item.image && (
+                <>
+                  <div class="product-image">
+                    <img 
+                      src={item.image} 
+                      alt={item.name} 
+                      class="cursor-pointer"
+                      data-modal-target={`modal-${item.name.replace(/\s+/g, '-')}`}
+                    />
+                  </div>
+                  
+                  <!-- Modal -->
+                  <div id={`modal-${item.name.replace(/\s+/g, '-')}`} class="fixed inset-0 bg-black bg-opacity-50 flex justify-center hidden items-center">
+                    <div class="bg-white p-4 rounded-lg relative w-[80%] h-[80%]">
+                      <button class="absolute top-8 right-8 text-black text-4xl font-bold" data-modal-close>&times;</button>
+                      <img src={item.image} alt={item.name} class="w-full h-full object-cover rounded-lg" />
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          )
+        ))}
+      </div>
     </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("[data-modal-target]").forEach(img => {
+      img.addEventListener("click", () => {
+        document.getElementById(img.dataset.modalTarget).classList.remove("hidden");
+      });
+    });
+
+    document.querySelectorAll("[data-modal-close]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const modal = btn.closest(".fixed");
+        if (modal) {
+          modal.classList.add("hidden");
+        }
+      });
+    });
+  });
+</script>
 
 </Layout>
 <style>
