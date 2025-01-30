@@ -79,6 +79,7 @@ if (!categoryData) {
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("[data-modal-target]").forEach(img => {
       img.addEventListener("click", () => {
+        console.log("Clicked on image");
         document.getElementById(img.dataset.modalTarget).classList.remove("hidden");
       });
     });
@@ -91,6 +92,14 @@ if (!categoryData) {
         }
       });
     });
+
+    const img = document.getElementById('your-image-id') as HTMLElement | null;
+    if (img && img.dataset.modalTarget) {
+      const modalElement = document.getElementById(img.dataset.modalTarget);
+      if (modalElement) {
+        modalElement.classList.remove("hidden");
+      }
+    }
   });
 </script>
 
