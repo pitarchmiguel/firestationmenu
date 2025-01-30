@@ -27,8 +27,7 @@ if (!categoryData) {
 ---
 
 <Layout>
-<div class="contenedor">
-    <div class="overflow-scroll" id="carta">
+
       <div class="atras">
         <a href="/"><svg  xmlns="http://www.w3.org/2000/svg"  width="36"  height="36"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left-dashed"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12h6m3 0h1.5m3 0h.5" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg></a>
       
@@ -39,10 +38,10 @@ if (!categoryData) {
         {categoryData && categoryData.items.map(item => (
           item.inStock === false ? null : (
             <div class="product-card">
-              <div class="product-info">
-                <h3 class="product-title">{item.name}</h3>
-                <p class="product-description">{item.ingredients}</p>
-                <p class="product-price">
+              <div class="flex-1 mr-8">
+                <h3>{item.name}</h3>
+                <p>{item.ingredients}</p>
+                <p class="font-semibold mt-2">
                   {item.price === 0 
                   ? 'Consultar el precio' 
                   : `${item.price.toFixed(2)} €`}
@@ -72,8 +71,6 @@ if (!categoryData) {
           )
         ))}
       </div>
-    </div>
-</div>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -114,12 +111,7 @@ if (!categoryData) {
   .logo img {
     object-fit: cover;
   }
-  .contenedor {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-  }
+  
   
   .carta {
     width: 100%;
@@ -148,31 +140,6 @@ if (!categoryData) {
   border-bottom: 1px solid #ddd;
   padding: 16px;
   margin: auto;
-}
-
-.product-info {
-  flex: 1;
-  margin-right: 16px;
-}
-
-.product-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #4d4d4d;
-  
-}
-
-.product-description {
-  font-size: 1rem;
-  color: #757575;
-  margin: 0 0 12px;
-}
-
-.product-price {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #373737;
-  margin: 0;
 }
 
 .product-image img {
