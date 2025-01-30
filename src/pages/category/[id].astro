@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import menuData from '../../components/menu.json'; // Ajusta la ruta si es necesario
 import Closed from '../../assets/close.svg';
+import Back from '../../assets/arrow-left.svg';
 
 
 // Generar rutas estáticas para cada categoría
@@ -29,16 +30,16 @@ if (!categoryData) {
 
 <Layout>
 
-      <div class="atras">
-        <a href="/"><svg  xmlns="http://www.w3.org/2000/svg"  width="36"  height="36"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left-dashed"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12h6m3 0h1.5m3 0h.5" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg></a>
+      <div class="flex justify-between items-center p-3 bg-white">
+        <a href="/"><Back size={38}/></a>
       
-      <img class="logo" src="/images/logo_firestation.png" alt="logo" class="logo">
+      <img class="w-16" src="/images/logo_firestation.png" alt="Logo Firestation">
       
       </div>
       <div>
         {categoryData && categoryData.items.map(item => (
           item.inStock === false ? null : (
-            <div class="product-card">
+            <div class="flex items-center p-4 border-b border-gray-200 bg-white">
                 <div class="flex-1 mr-8">
                   
                       <h3 class="font-bold">{item.name}</h3>
@@ -51,20 +52,20 @@ if (!categoryData) {
                 </div>
 
               {item.image && (
-                  <div class="product-image">
+                  <div class="w-24 h-24 object-cover">
                     <img 
                       src={item.image} 
                       alt={item.name} 
-                      class="cursor-pointer"
+                      class="w-full h-full object-cover rounded-lg cursor-pointer border border-gray-200"
                       data-modal-target={`modal-${item.name.replace(/\s+/g, '-')}`}
                     />
                   </div>
                   
                   <!-- Modal -->
                   <div id={`modal-${item.name.replace(/\s+/g, '-')}`} class="fixed inset-0 bg-black bg-opacity-50 flex justify-center hidden items-center">
-                      <div class="bg-white p-4 rounded-lg relative w-[80%] h-[70%]">
+                      <div class="bg-white p-2 rounded-2xl relative w-[70%] h-[60%]">
                         <button class="absolute top-8 right-8" data-modal-close><Closed size={38}/></button>
-                        <img src={item.image} alt={item.name} class="w-full h-full object-cover rounded-lg" />
+                        <img src={item.image} alt={item.name} class="w-full h-full object-cover rounded-xl" />
                       </div>
                   </div>
               )}
@@ -92,52 +93,3 @@ if (!categoryData) {
       </script>
 
 </Layout>
-<style>
-  .logo {
-    width: 60px;
-    height: 60px;
-    padding: 10px;
-  }
-  
-  .logo img {
-    object-fit: cover;
-  }
-  
-  
-  .carta {
-    width: 100%;
-    background-color: var(--gray_050);
-    box-shadow: var(--gray_400);
-}
-.atras {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  top: 0px;
-  width: 100%; /* Se ajusta al ancho del contenedor padre */
-  background-color: rgb(255, 255, 255); /* Fondo semitransparente (tomato con opacidad) *//* Asegura que esté sobre otros elementos */
-  padding: 10px; /* Espaciado interno */
-}
-
-.atras a {
-  display: block;
-  color: #333;
-  padding: 10px;
-}
-  .product-card {
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-  padding: 16px;
-  margin: auto;
-}
-
-.product-image img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-}
-</style>
