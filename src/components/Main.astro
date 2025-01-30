@@ -73,3 +73,30 @@ import MoreInfo from '../assets/more-info.svg';
 </div>
 </div>
 </div>
+
+<script>
+const button = document.querySelector('#open-info') as HTMLElement | null;
+const closed = document.querySelector('#cerrar-popup') as HTMLElement | null;
+
+if (button) {
+    button.addEventListener('click', () => {
+        console.log('Button clicked');
+        const popup = document.querySelector('#popup') as HTMLElement | null;
+        if (popup) {
+            popup.style.left = '0';
+            popup.style.bottom = '0';
+        }
+    });
+}
+
+if (closed) {
+    closed.addEventListener('click', () => {
+        console.log('Closed clicked');
+        const popup = document.querySelector('#popup') as HTMLElement | null;
+        if (popup) {
+            popup.style.left = '-100%';
+        }
+    });
+}
+
+</script>
