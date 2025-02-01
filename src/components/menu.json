@@ -6,11 +6,11 @@
             "items": [
                 {"name": "B.Press", "price": 5.50, "ingredients": "Jamón serrano con tomate y AOVE", "inStock": true, "image": ""},
                 {"name": "Burpee", "price": 5.50, "ingredients": "Atún al natural con tomate y AOVE", "inStock": true, "image": ""},
-                {"name": "DL", "price": 6.00, "ingredients": "Tortilla francesa con queso, tomate y AOVE", "inStock": true, "image": ""},
+                {"name": "DL", "price": 6.00, "ingredients": "Tortilla francesa con queso, tomate y AOVE", "inStock": true, "image": "/images/bocata_tortilla_francesa.jpeg"},
                 {"name": "BMU", "price": 6.00, "ingredients": "Lomo, queso, tomate y AOVE", "inStock": true, "image": ""},
                 {"name": "T2B", "price": 6.00, "ingredients": "Bacon, queso, tomate y AOVE", "inStock": true, "image": ""},
                 {"name": "BJO", "price": 7.00, "ingredients": "Atún, lechuga, tomate, huevo duro, cebolla y AOVE", "inStock": true, "image": "/images/bocadillo_atun.jpeg"},
-                {"name": "SNATCH", "price": 7.50, "ingredients": "Pollo a la plancha, tomate seco, lechuga, cheddar, salsa pesto y mayonesa", "inStock": true, "image": ""}
+                {"name": "SNATCH", "price": 7.50, "ingredients": "Pollo a la plancha, tomate seco, lechuga, cheddar, salsa pesto y mayonesa", "inStock": true, "image": "/images/snatch.jpeg"}
             ]
         },
         {
@@ -21,13 +21,13 @@
                 {"name": "Tomate y aceite de oliva", "price": 2.50, "inStock": true, "image": ""},
                 {"name": "Mantequilla y mermelada", "price": 2.50, "inStock": true, "image": ""},
                 {"name": "Jamón serrano, tomate y AOVE", "price": 4.00, "inStock": true, "image": ""},
-                {"name": "Atún, tomate y AOVE", "price": 4.00, "inStock": true, "image": ""},
+                {"name": "Atún, tomate y AOVE", "price": 4.00, "inStock": true, "image": "/images/tomate_atun.jpeg"},
                 {"name": "Pechuga de pavo, tomate y AOVE", "price": 4.00, "inStock": true, "image": ""},
                 {"name": "Revuelto, tomate y AOVE", "price": 4.00, "inStock": true, "image": ""},
                 {"name": "Queso fresco/untar, tomate y AOVE", "price": 4.00, "inStock": false, "image": ""},
                 {"name": "Queso Cottage, aguacate y AOVE", "price": 4.00, "inStock": true, "image": "/images/tostada_cottage.jpeg"},
                 {"name": "Jamón serrano, aguacate, tomate y AOVE", "price": 4.50, "inStock": true, "image": ""},
-                {"name": "Revuelto, aguacate, tomate y AOVE", "price": 4.50, "inStock": true, "image": ""},
+                {"name": "Revuelto, aguacate, tomate y AOVE", "price": 4.50, "inStock": true, "image": "/images/revuelto_aguacate.jpeg"},
                 {"name": "Plátano, crema de cacahuete y nibs de chocolate", "price": 4.50, "inStock": true, "image": "/images/tostada_platano.jpeg"},
                 {"name": "Salmón, aguacate y semillas", "price": 4.50, "inStock": true, "image": ""},
                 {"name": "Queso crema, aguacate, revuelto y AOVE", "price": 4.50, "inStock": true, "image": ""},
@@ -40,7 +40,7 @@
             "category": "Bowls",
             "items": [
                 {"name": "Boxfire", "price": 7.00, "ingredients": "Copos de avena, leche vegetal o de vaca, proteína en polvo, crema de cacahuete, plátano, chocolate, semillas y nueces", "inStock": true, "image": "/images/bol_boxfire.jpeg"},
-                {"name": "Cacao", "price": 5.50, "ingredients": "Copos de avena, cacao, plátano y crema de cacahuete", "inStock": true, "image": ""},
+                {"name": "Cacao", "price": 5.50, "ingredients": "Copos de avena, cacao, plátano y crema de cacahuete", "inStock": true, "image": "/images/bol_cacau.jpeg"},
                 {"name": "Fruta", "price": 5.00, "ingredients": "Copos de avena, frutos secos y fruta natural", "inStock": true, "image": ""},
                 {"name": "Muesli", "price": 5.00, "ingredients": "Yogurt natural, muesli, fruta y frutos secos", "inStock": true, "image": "/images/bol_yogur.jpeg"},
                 {"name": "Açaí", "price": 6.50, "ingredients": "Yogurt natural, açaí, fruta natural y muesli", "inStock": true, "image": ""},
