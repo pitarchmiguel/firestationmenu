@@ -113,7 +113,7 @@
                 {"name": "Bombón", "price": 1.50, "inStock": true, "image": ""},
                 {"name": "Infusiones", "price": 1.30, "inStock": true, "image": ""},
                 {"name": "Cola-Cao", "price": 2.00, "inStock": true, "image": ""},
-                {"name": "Extras", "price": 0.20, "ingredients": "hielo, para llevar, leches vegetales", "inStock": true, "image": ""}
+                {"name": "Extras", "price": 0.20, "ingredients": "Hielo, para llevar, leches vegetales", "inStock": true, "image": ""}
             ]
         },
         {
