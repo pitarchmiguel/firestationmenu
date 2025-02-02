@@ -32,7 +32,8 @@
                 {"name": "Salmón, aguacate y semillas", "price": 4.50, "inStock": true, "image": ""},
                 {"name": "Queso crema, aguacate, revuelto y AOVE", "price": 4.50, "inStock": true, "image": ""},
                 {"name": "Salmón, aguacate, queso crema y semillas", "price": 5.00, "inStock": true, "image": ""},
-                {"name": "Revuelto, jamón/salmón, tomate, aguacate y AOVE", "price": 5.00, "inStock": true, "image": ""}
+                {"name": "Revuelto, jamón/salmón, tomate, aguacate y AOVE", "price": 5.00, "inStock": true, "image": ""},
+                {"name": "Tomate, aguacate, revuelto y panceta", "price": 5, "inStock": true, "image": "/images/revuelto_panceta.jpeg"}
             ]
         },
         {
