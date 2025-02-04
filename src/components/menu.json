@@ -71,8 +71,8 @@
             "id": 6,
             "category": "Zumos",
             "items": [
-                {"name": "Zumo de naranja natural", "price": 2.50, "inStock": true, "image": ""},
-                {"name": "Zumo de naranja, limón y pomelo", "price": 2.50, "inStock": true, "image": ""},
+                {"name": "Zumo de naranja natural", "price": 2.50, "inStock": true, "image": "/images/zumo_naranja.jpeg"},
+                {"name": "Zumo de naranja, limón y pomelo", "price": 2.50, "inStock": true, "image": "/images/zumo_nar-lim-po.jpeg"},
                 {"name": "Licuados de frutas", "price": 3.00, "inStock": true, "image": ""}
             ]
         },
