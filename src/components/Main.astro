@@ -34,9 +34,9 @@ import MoreInfo from '../assets/more-info.svg';
   <ul class="flex flex-col place-items-center gap-4 mb-4">
     {categories
       .map(category => (
-          <button class="p-3 text-md border rounded-xl border-slate-300 w-[90%] text-slate-700">
+          <button class="p-3 text-md border rounded-xl border-slate-300 w-[90%] text-slate-600">
             <li>
-              <a class="block" href={`/category/${category.id}`}>{category.category}</a>
+              <a class="block noto-sans uppercase" href={`/category/${category.id}`}>{category.category}</a>
             </li>
           </button>
       ))}
@@ -107,6 +107,16 @@ if (closed) {
   font-family: "Great Vibes", serif;
   font-weight: 400;
   font-style: normal;
+}
+
+
+.noto-sans {
+  font-family: "Noto Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 }
 
 </style>
