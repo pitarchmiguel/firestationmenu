@@ -4,11 +4,11 @@
             "id": 1,
             "category": "Bocadillos",
             "items": [
-                {"name": "B.Press", "price": 5.50, "ingredients": "Jamón serrano con tomate y AOVE", "inStock": true, "image": ""},
+                {"name": "B.Press", "price": 5.50, "ingredients": "Jamón serrano con tomate y AOVE", "inStock": true, "image": "/images/bench_press.jpg"},
                 {"name": "Burpee", "price": 5.50, "ingredients": "Atún al natural con tomate y AOVE", "inStock": true, "image": ""},
                 {"name": "DL", "price": 6.00, "ingredients": "Tortilla francesa con queso, tomate y AOVE", "inStock": true, "image": "/images/bocata_tortilla_francesa.jpeg"},
-                {"name": "BMU", "price": 6.00, "ingredients": "Lomo, queso, tomate y AOVE", "inStock": true, "image": ""},
-                {"name": "T2B", "price": 6.00, "ingredients": "Bacon, queso, tomate y AOVE", "inStock": true, "image": ""},
+                {"name": "BMU", "price": 6.00, "ingredients": "Lomo, queso, tomate y AOVE", "inStock": true, "image": "/images/lomo-queso-tomate.jpg"},
+                {"name": "T2B", "price": 6.00, "ingredients": "Bacon, queso, tomate y AOVE", "inStock": true, "image": "/images/t2b.jpg"},
                 {"name": "BJO", "price": 7.00, "ingredients": "Atún, lechuga, tomate, huevo duro, cebolla y AOVE", "inStock": true, "image": "/images/bocadillo_atun.jpeg"},
                 {"name": "SNATCH", "price": 7.50, "ingredients": "Pollo a la plancha, tomate seco, lechuga, cheddar, salsa pesto y mayonesa", "inStock": true, "image": "/images/snatch.jpeg"}
             ]
@@ -44,9 +44,9 @@
                 {"name": "Cacao", "price": 5.50, "ingredients": "Copos de avena, cacao, plátano y crema de cacahuete", "inStock": true, "image": "/images/bol_cacau.jpeg"},
                 {"name": "Fruta", "price": 5.00, "ingredients": "Copos de avena, frutos secos y fruta natural", "inStock": true, "image": ""},
                 {"name": "Muesli", "price": 5.00, "ingredients": "Yogurt natural, muesli, fruta y frutos secos", "inStock": true, "image": "/images/bol_yogur.jpeg"},
-                {"name": "Açaí", "price": 6.50, "ingredients": "Yogurt natural, açaí, fruta natural y muesli", "inStock": true, "image": ""},
+                {"name": "Açaí", "price": 6.50, "ingredients": "Yogurt natural, açaí, fruta natural y muesli", "inStock": true, "image": "/images/acai.jpg"},
                 {"name": "Espirulina", "price": 6.50, "ingredients": "Yogurt natural, espirulina, fruta natural y muesli", "inStock": true, "image": ""},
-                {"name": "Natural", "price": 3.50, "ingredients": "Yogurt natural y fruta natural", "inStock": true, "image": ""}
+                {"name": "Natural", "price": 3.50, "ingredients": "Yogurt natural y fruta natural", "inStock": true, "image": "/images/mango.jpg"}
             ]
         },
         {
@@ -121,7 +121,7 @@
             "id": 10,
             "category": "Tartas y dulces Saludables",
             "items": [
-                {"name": "Carrot cake / Carrot plum cake", "price": 4.00, "inStock": true, "image": ""},
+                {"name": "Carrot cake / Carrot plum cake", "price": 4.00, "inStock": true, "image": "/images/carrot_cake.jpg"},
                 {"name": "Doble Cheesecake", "price": 4.00, "inStock": true, "image": ""},
                 {"name": "Cheesecake", "price": 4.00, "inStock": true, "image": ""},
                 {"name": "Brownie", "price": 3.00, "inStock": true, "image": ""},
@@ -138,7 +138,7 @@
                 {"name": "Tarta de chocolate blanco", "price": 0, "inStock": true, "image": ""},
                 {"name": "Cheesecake de chocolate blanco y galletas dinosaurio", "price": 0, "inStock": true, "image": ""},
                 {"name": "Cheesecake de lotus", "price": 0, "inStock": true, "image": ""},
-                {"name": "Carrot cake", "price": 0, "inStock": true, "image": ""},
+                {"name": "Carrot cake", "price": 0, "inStock": true, "image": "/images/carrot_cake.jpg"},
                 {"name": "Tarta de limón", "price": 0, "inStock": true, "image": ""},
                 {"name": "Tarta de Kinder Bueno", "price": 0, "inStock": true, "image": ""}
             ]
