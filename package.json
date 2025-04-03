@@ -1,16 +1,35 @@
 {
   "name": "firestation",
-  "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Panel de administración para Firestation",
+  "main": "src/server.js",
   "scripts": {
+    "start": "node src/server.js",
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "astro preview"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@astrojs/tailwind": "^5.1.4",
-    "astro": "^5.1.4",
+    "@astrojs/node": "^5.3.6",
+    "@astrojs/react": "^4.2.3",
+    "@astrojs/tailwind": "^6.0.2",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "path-to-regexp": "^8.2.0",
+    "pg": "^8.10.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "astro": "^3.0.0",
+    "nodemon": "^3.0.2"
   }
 }

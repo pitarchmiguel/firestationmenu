@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Great Vibes';
+    src: url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+  }
+  
+  @font-face {
+    font-family: 'Noto Sans';
+    src: url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+  }
+} 

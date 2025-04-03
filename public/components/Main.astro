@@ -1,7 +1,7 @@
 ---
-// Obtener las categorías de la API
-const response = await fetch('http://localhost:3000/api/categories');
-const categories = await response.json();
+import menuData from './menu.json'; // Ruta correcta del archivo JSON
+// Acceder a las categorías
+const categories = menuData.menu;
 import Close from '../assets/close.svg';
 import Phone from '../assets/phone.svg';
 import Map from '../assets/map.svg';
@@ -19,34 +19,33 @@ import MoreInfo from '../assets/more-info.svg';
   <h1 class="text-3xl font-extrabold text-gray-800 uppercase tracking-tight pt-3 pb-3 noto-sans">Firestation</h1>
   <aside class="flex justify-between mt-4 mb-4 items-center">
       <div class="flex gap-3 items-center">
-          <img src="/icons/info-circle.svg" alt="Info" class="w-8 h-8" />
+          <Info size={38}/>
           <div>
               <p class="font-semibold">Información</p>
               <span class="text-sm text-gray-600">Dirección, Teléfono, Horarios</span>
           </div>
       </div>
-       <button id="open-info">
-        <img src="/icons/more-info.svg" alt="More Info" class="w-8 h-8" />
-      </button>
+       <button id="open-info"><MoreInfo size={40}/></button>
   </aside>
 </div>
 
 
 <div>
   <ul class="flex flex-col place-items-center gap-4 mb-4">
-    {categories.map(category => (
-        <button class="p-3 text-md border rounded-xl border-slate-300 w-[90%] text-slate-600">
-          <li>
-            <a class="block noto-sans uppercase" href={`/category/${category.id}`}>{category.name}</a>
-          </li>
-        </button>
-    ))}
+    {categories
+      .map(category => (
+          <button class="p-3 text-md border rounded-xl border-slate-300 w-[90%] text-slate-600">
+            <li>
+              <a class="block noto-sans uppercase" href={`/category/${category.id}`}>{category.category}</a>
+            </li>
+          </button>
+      ))}
   </ul>
 
   <div id="popup" class="h-[90%] w-full bg-slate-100 absolute rounded-3xl transition-all duration-500 ease-in-out overflow-hidden -left-full">
 
     <button id="cerrar-popup" class="cursor-pointer absolute top-0 right-0 p-4">
-        <img src="/icons/close.svg" alt="Close" class="w-8 h-8" />
+        <Close width={38} height={38} />
     </button>
 
     
@@ -57,21 +56,18 @@ import MoreInfo from '../assets/more-info.svg';
             <span class="great-vibes-regular text-3xl">Nerea Centelles</span>
             <address class="flex flex-col gap-3 mt-6 not-italic">
                 <div class="flex items-center gap-4">
-                    <img src="/icons/map.svg" alt="Map" class="w-6 h-6" />
-                    <p>C/ Amelia Ferrer Armengot 12<br>12004 Castellón de la Plana</p>
+                    <Map /> <p>C/ Amelia Ferrer Armengot 12<br>12004 Castellón de la Plana</p>
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <img src="/icons/phone.svg" alt="Phone" class="w-6 h-6" />
-                    <a href="tel:+34690040694">690 040 694</a>
+                    <Phone /> <a href="tel:+34690040694">690 040 694</a>
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <img src="/icons/schedule.svg" alt="Schedule" class="w-6 h-6" />
-                    <p>Lu - Vi: 7:00 - 17:00<br>Sab: 8:00 - 13:00</p>
+                    <Schedule /> <p>Lu - Vi: 7:00 - 17:00<br>Sab: 8:00 - 13:00</p>
                 </div>
                 
-            </address>
+            </adress>
         </div>
     </div>
     
