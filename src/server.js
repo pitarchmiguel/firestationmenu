@@ -36,13 +36,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Servir archivos estáticos
-app.use(express.static(path.join(__dirname, '../dist/client')));
-app.use('/assets', express.static(path.join(__dirname, '../dist/client/assets')));
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
-app.use('/images', express.static(path.join(__dirname, '../public/images')));
-app.use('/icons', express.static(path.join(__dirname, '../public/icons')));
-
 // Rutas de la API
 app.get('/api/categories', async (req, res) => {
   try {
@@ -127,17 +120,15 @@ app.delete('/api/menu-items/:id', async (req, res) => {
   }
 });
 
-// Ruta para el panel de administración
+// Servir archivos estáticos
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+app.use('/images', express.static(path.join(__dirname, '../public/images')));
+app.use('/icons', express.static(path.join(__dirname, '../public/icons')));
 app.use('/admin-panel', express.static(path.join(__dirname, '../public/admin-panel')));
 
-// Todas las demás rutas sirven la aplicación principal
-app.get('*', (req, res) => {
-  if (req.url.startsWith('/api')) {
-    res.status(404).json({ error: 'API endpoint not found' });
-  } else {
-    res.sendFile(path.join(__dirname, '../dist/client/index.html'));
-  }
-});
+// Importar y usar el handler de Astro
+const { handler } = require('../dist/server/entry.mjs');
+app.use(handler);
 
 // Error handling
 app.use((err, req, res, next) => {

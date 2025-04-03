@@ -13,7 +13,9 @@ export default defineConfig({
     mode: 'standalone'
   }),
   build: {
-    assets: 'assets'
+    client: './dist/client',
+    server: './dist/server',
+    serverEntry: 'entry.mjs'
   },
   vite: {
     build: {
