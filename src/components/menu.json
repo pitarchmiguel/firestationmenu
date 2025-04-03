@@ -18,12 +18,12 @@
             "category": "Tostas",
             "items": [
                 {"name": "Aceite y sal", "price": 2.00, "inStock": true, "image": ""},
-                {"name": "Tomate y aceite de oliva", "price": 2.50, "inStock": true, "image": ""},
+                {"name": "Tomate y aceite de oliva", "price": 2.50, "inStock": true, "image": "/images/tomateyavoe.jpg"},
                 {"name": "Mantequilla y mermelada", "price": 2.50, "inStock": true, "image": ""},
-                {"name": "Jamón serrano, tomate y AOVE", "price": 4.00, "inStock": true, "image": ""},
+                {"name": "Jamón serrano, tomate y AOVE", "price": 4.00, "inStock": true, "image": "/images/pernil.jpg"},
                 {"name": "Atún, tomate y AOVE", "price": 4.00, "inStock": true, "image": "/images/tomate_atun.jpeg"},
                 {"name": "Pechuga de pavo, tomate y AOVE", "price": 4.00, "inStock": true, "image": ""},
-                {"name": "Revuelto, tomate y AOVE", "price": 4.00, "inStock": true, "image": ""},
+                {"name": "Revuelto, tomate y AOVE", "price": 4.00, "inStock": true, "image": "/images/revuelto.jpg"},
                 {"name": "Queso fresco/untar, tomate y AOVE", "price": 4.00, "inStock": false, "image": ""},
                 {"name": "Queso Cottage, aguacate y AOVE", "price": 4.00, "inStock": true, "image": "/images/tostada_cottage.jpeg"},
                 {"name": "Jamón serrano, aguacate, tomate y AOVE", "price": 4.50, "inStock": true, "image": ""},
@@ -31,7 +31,7 @@
                 {"name": "Plátano, crema de cacahuete y nibs de chocolate", "price": 4.50, "inStock": true, "image": "/images/tostada_platano.jpeg"},
                 {"name": "Salmón, aguacate y semillas", "price": 4.50, "inStock": true, "image": ""},
                 {"name": "Queso crema, aguacate, revuelto y AOVE", "price": 4.50, "inStock": true, "image": ""},
-                {"name": "Salmón, aguacate, queso crema y semillas", "price": 5.00, "inStock": true, "image": ""},
+                {"name": "Salmón, aguacate, queso crema y semillas", "price": 5.00, "inStock": true, "image": "/images/salmonaguacatecrema.jpg"},
                 {"name": "Revuelto, jamón/salmón, tomate, aguacate y AOVE", "price": 5.00, "inStock": true, "image": ""},
                 {"name": "Tomate, aguacate, revuelto y panceta", "price": 5, "inStock": true, "image": "/images/revuelto_panceta.jpeg"}
             ]
