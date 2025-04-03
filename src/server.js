@@ -36,7 +36,14 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Rutas
+// Servir archivos estáticos
+app.use(express.static(path.join(__dirname, '../dist/client')));
+app.use('/assets', express.static(path.join(__dirname, '../dist/client/assets')));
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+app.use('/images', express.static(path.join(__dirname, '../public/images')));
+app.use('/icons', express.static(path.join(__dirname, '../public/icons')));
+
+// Rutas de la API
 app.get('/api/categories', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM categories ORDER BY id');
@@ -120,12 +127,16 @@ app.delete('/api/menu-items/:id', async (req, res) => {
   }
 });
 
-// Servir archivos estáticos
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+// Ruta para el panel de administración
+app.use('/admin-panel', express.static(path.join(__dirname, '../public/admin-panel')));
 
-// Ruta de prueba para verificar que el servidor está funcionando
-app.get('/', (req, res) => {
-  res.json({ message: 'API funcionando correctamente' });
+// Todas las demás rutas sirven la aplicación principal
+app.get('*', (req, res) => {
+  if (req.url.startsWith('/api')) {
+    res.status(404).json({ error: 'API endpoint not found' });
+  } else {
+    res.sendFile(path.join(__dirname, '../dist/client/index.html'));
+  }
 });
 
 // Error handling
