@@ -1,12 +1,12 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
 const { Pool } = require('pg');
+const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
@@ -14,116 +14,134 @@ app.use(express.json());
 
 // Configuración de la base de datos
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
-// Configuración de Multer para subir imágenes
+// Configuración de multer para subida de archivos
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../uploads'));
+    const uploadDir = path.join(__dirname, '../uploads');
+    if (!fs.existsSync(uploadDir)){
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    cb(null, uploadDir);
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname));
+    cb(null, Date.now() + '-' + file.originalname);
   }
 });
 
 const upload = multer({ storage: storage });
 
-// Servir archivos estáticos desde la carpeta dist
-app.use(express.static(path.join(__dirname, '../dist')));
-app.use('/assets', express.static(path.join(__dirname, '../dist/assets')));
-app.use('/images', express.static(path.join(__dirname, '../public/images')));
-app.use('/icons', express.static(path.join(__dirname, '../public/icons')));
-
-// Rutas de la API
-app.get('/api', (req, res) => {
-  res.json({ message: 'API funcionando correctamente' });
-});
-
-// Rutas para categorías
+// Rutas
 app.get('/api/categories', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM categories');
+    const result = await pool.query('SELECT * FROM categories ORDER BY id');
     res.json(result.rows);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Error al obtener categorías' });
+    res.status(500).json({ error: 'Error al obtener las categorías' });
   }
 });
 
-// Rutas para items del menú
 app.get('/api/menu-items', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM menu_items');
+    const result = await pool.query('SELECT * FROM menu_items ORDER BY id');
     res.json(result.rows);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Error al obtener items del menú' });
+    res.status(500).json({ error: 'Error al obtener los items del menú' });
   }
 });
 
 app.post('/api/menu-items', upload.single('image'), async (req, res) => {
   try {
-    const { name, price, ingredients, in_stock, category_id } = req.body;
+    const { name, price, ingredients, category_id, in_stock } = req.body;
     const image_url = req.file ? `/uploads/${req.file.filename}` : null;
-
+    
     const result = await pool.query(
-      'INSERT INTO menu_items (name, price, ingredients, in_stock, category_id, image_url) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
-      [name, price, ingredients, in_stock, category_id, image_url]
+      'INSERT INTO menu_items (name, price, ingredients, category_id, in_stock, image_url) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+      [name, price, ingredients, category_id, in_stock === 'true', image_url]
     );
-
+    
     res.json(result.rows[0]);
   } catch (err) {
-    console.error('Error al crear item del menú:', err);
-    res.status(500).json({ error: 'Error al crear item del menú' });
+    console.error(err);
+    res.status(500).json({ error: 'Error al crear el item del menú' });
   }
 });
 
 app.put('/api/menu-items/:id', upload.single('image'), async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, price, ingredients, in_stock, category_id } = req.body;
-    const image_url = req.file ? `/uploads/${req.file.filename}` : null;
-
-    const result = await pool.query(
-      'UPDATE menu_items SET name = $1, price = $2, ingredients = $3, in_stock = $4, category_id = $5, image_url = COALESCE($6, image_url) WHERE id = $7 RETURNING *',
-      [name, price, ingredients, in_stock, category_id, image_url, id]
-    );
-
+    const { name, price, ingredients, category_id, in_stock } = req.body;
+    const image_url = req.file ? `/uploads/${req.file.filename}` : undefined;
+    
+    let query = 'UPDATE menu_items SET name = $1, price = $2, ingredients = $3, category_id = $4, in_stock = $5';
+    let values = [name, price, ingredients, category_id, in_stock === 'true'];
+    
+    if (image_url) {
+      query += ', image_url = $6';
+      values.push(image_url);
+    }
+    
+    query += ' WHERE id = $' + (values.length + 1) + ' RETURNING *';
+    values.push(id);
+    
+    const result = await pool.query(query, values);
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Item no encontrado' });
+    }
+    
     res.json(result.rows[0]);
   } catch (err) {
-    console.error('Error al actualizar item del menú:', err);
-    res.status(500).json({ error: 'Error al actualizar item del menú' });
+    console.error(err);
+    res.status(500).json({ error: 'Error al actualizar el item del menú' });
   }
 });
 
 app.delete('/api/menu-items/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    await pool.query('DELETE FROM menu_items WHERE id = $1', [id]);
+    const result = await pool.query('DELETE FROM menu_items WHERE id = $1 RETURNING *', [id]);
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Item no encontrado' });
+    }
+    
     res.json({ message: 'Item eliminado correctamente' });
   } catch (err) {
-    console.error('Error al eliminar item del menú:', err);
-    res.status(500).json({ error: 'Error al eliminar item del menú' });
+    console.error(err);
+    res.status(500).json({ error: 'Error al eliminar el item del menú' });
   }
 });
 
-// Ruta para servir el frontend - debe ir después de las rutas de la API
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+// Servir archivos estáticos
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
+// Ruta de prueba para verificar que el servidor está funcionando
+app.get('/', (req, res) => {
+  res.json({ message: 'API funcionando correctamente' });
 });
 
-// Manejo de errores
+// Error handling
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ error: 'Algo salió mal en el servidor' });
+  res.status(500).json({ error: 'Algo salió mal!' });
 });
 
-// Iniciar servidor
-app.listen(port, () => {
-  console.log(`Servidor corriendo en http://localhost:${port}`);
-}); 
+const PORT = process.env.PORT || 3000;
+
+// Para Vercel, exportamos la app
+module.exports = app;
+
+// Solo iniciamos el servidor si no estamos en Vercel
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  });
+} 
