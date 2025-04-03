@@ -13,8 +13,7 @@ export default defineConfig({
     mode: 'standalone'
   }),
   build: {
-    assets: 'assets',
-    inlineStylesheets: 'always'
+    assets: 'assets'
   },
   vite: {
     build: {
