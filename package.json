@@ -1,23 +1,24 @@
 {
   "name": "firestation",
+  "type": "module",
   "version": "1.0.0",
   "description": "Panel de administración para Firestation",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "vercel-build": "npm install && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@astrojs/node": "^5.3.0",
-    "@astrojs/react": "^2.2.1",
-    "@astrojs/tailwind": "^4.0.0",
-    "astro": "^2.10.15",
+    "@astrojs/node": "^5.3.6",
+    "@astrojs/react": "^3.0.7",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^3.6.5",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",

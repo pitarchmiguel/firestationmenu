@@ -1,10 +1,14 @@
-require('dotenv').config();
-const express = require('express');
-const { Pool } = require('pg');
-const cors = require('cors');
-const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
+import 'dotenv/config';
+import express from 'express';
+import { Pool } from 'pg';
+import cors from 'cors';
+import multer from 'multer';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -35,6 +39,13 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
+// Servir archivos estáticos
+app.use(express.static(path.join(__dirname, '../dist/client')));
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+app.use('/images', express.static(path.join(__dirname, '../public/images')));
+app.use('/icons', express.static(path.join(__dirname, '../public/icons')));
+app.use('/admin-panel', express.static(path.join(__dirname, '../public/admin-panel')));
 
 // Rutas de la API
 app.get('/api/categories', async (req, res) => {
@@ -120,15 +131,38 @@ app.delete('/api/menu-items/:id', async (req, res) => {
   }
 });
 
-// Servir archivos estáticos
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
-app.use('/images', express.static(path.join(__dirname, '../public/images')));
-app.use('/icons', express.static(path.join(__dirname, '../public/icons')));
-app.use('/admin-panel', express.static(path.join(__dirname, '../public/admin-panel')));
+// Importar y usar el handler de Astro como middleware
+let handler;
+try {
+  const astroModule = await import('../dist/server/entry.mjs');
+  handler = astroModule.handler;
+} catch (error) {
+  console.error('Error al importar el handler de Astro:', error);
+  handler = (req, res) => {
+    res.status(500).send('Error al cargar la aplicación');
+  };
+}
 
-// Importar y usar el handler de Astro
-const { handler } = require('../dist/server/entry.mjs');
-app.use(handler);
+// Usar el handler de Astro para todas las rutas que no sean API o archivos estáticos
+app.use(async (req, res, next) => {
+  if (req.url.startsWith('/api/')) {
+    return next();
+  }
+  
+  try {
+    const response = await handler(req, res);
+    if (!response) return next();
+    
+    res.writeHead(response.status, response.headers);
+    if (response.body) {
+      res.write(response.body);
+    }
+    res.end();
+  } catch (error) {
+    console.error('Error en el handler de Astro:', error);
+    next(error);
+  }
+});
 
 // Error handling
 app.use((err, req, res, next) => {
@@ -139,7 +173,7 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 3000;
 
 // Para Vercel, exportamos la app
-module.exports = app;
+export default app;
 
 // Solo iniciamos el servidor si no estamos en Vercel
 if (process.env.NODE_ENV !== 'production') {
